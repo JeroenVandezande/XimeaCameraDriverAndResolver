@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net7.0;net48</TargetFrameworks>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>Orendes.Ximea.ManagedResolver</PackageId>
+        <Version>0.1.0</Version>
+        <Authors>Orendes</Authors>
+        <Description>Cross-platform XIMEA xiAPI .NET wrapper with unmanaged resolver.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression> 
+        <RepositoryUrl>https://github.com/JeroenVandezande/XimeaCameraDriverAndResolver</RepositoryUrl> 
+        <PackageReadmeFile>README.md</PackageReadmeFile>            
+        <IncludeSymbols>true</IncludeSymbols>                        
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>            
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="XimeaDotNetAssemblies\" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
+        <Reference Include="xiApi.NETX64">
+            <HintPath>XimeaDotNetAssemblies/xiAPI.NET.NET.7.0/xiApi.NETX64.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <!-- Pack vendor managed DLLs so consumers get them automatically -->
+    <ItemGroup>
+        <!-- XIMEA managed DLL for .NET 8 consumers -->
+        <None Include="XimeaDotNetAssemblies/xiAPI.NET.NET.7.0/xiApi.NETX64.dll"
+              Pack="true" PackagePath="lib/net7.0/" />
+
+        <!-- XIMEA managed DLL for .NET Framework 4.8 consumers -->
+        <None Include="XimeaDotNetAssemblies/xiAPI.NET.Framework.4.7.2/xiApi.NETX64.dll"
+              Pack="true" PackagePath="lib/net48/" />
+    </ItemGroup>
+
+    <!-- Optional: include README or icon in the package -->
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="" Condition="Exists('README.md')" />
+    </ItemGroup>
+    
+</Project>
