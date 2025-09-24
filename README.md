@@ -25,9 +25,6 @@ A tiny helper package that makes **XIMEA’s xiAPI .NET** work smoothly across p
   - Linux: `libm3api.so` (or `m3api`)
   - macOS: `libm3api.dylib` (or `m3api`)
 
-- **No boilerplate**  
-  Uses a module initializer — you don’t need to call `Init()`.
-
 ---
 
 ## Install
