@@ -31,11 +31,11 @@
                     ? new[]
                     {
                         "xiapi64.dll", "xiapi32.dll", "xiapi.dll"
-                    } // try both; some vendors ship a neutral name too
+                    } 
                     : OperatingSystem.IsLinux()
                         ? new[]
                         {
-                            "libm3api.so", "m3api", "libxiapi.so"
+                          "libm3api.so.2", "libm3api.so", "m3api", "libxiapi.so"
                         } // common Linux patterns
                         : OperatingSystem.IsMacOS()
                             ? new[]
